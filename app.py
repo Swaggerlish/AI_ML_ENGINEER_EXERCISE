@@ -22,7 +22,7 @@ class BatchInput(BaseModel):
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy"}[file:1]
+    return {"status": "healthy"}
 
 @app.post("/predict")
 async def predict(input: TextInput):
@@ -32,7 +32,7 @@ async def predict(input: TextInput):
         labels = ['negative', 'neutral', 'positive']
         return {"sentiment": labels[pred]}
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))[file:1]
+        raise HTTPException(status_code=400, detail=str(e))
 
 @app.post("/predict_batch")
 async def predict_batch(input: BatchInput):
@@ -42,7 +42,7 @@ async def predict_batch(input: BatchInput):
         labels = ['negative', 'neutral', 'positive']
         return [{"sentiment": labels[p]} for p in preds]
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))[file:1]
+        raise HTTPException(status_code=400, detail=str(e))
 
 if __name__ == "__main__":
     import uvicorn
