@@ -10,11 +10,6 @@ from datasets import Dataset, load_dataset
 import joblib
 from huggingface_hub import snapshot_download
 
-# Load data (IMDB example)
-# dataset = snapshot_download("imdb")
-# df = pd.read_csv("path/to/imdb.csv")  # Adjust path
-# df['label'] = df['sentiment'].map({'positive': 2, 'negative': 0})  # 0=neg, 1=neu? Wait, binary for IMDB
-# X_train, X_test, y_train, y_test = train_test_split(df['review'], df['label'], test_size=0.2)
 
 dataset = load_dataset("imdb", split="train")
 df = dataset.to_pandas()
